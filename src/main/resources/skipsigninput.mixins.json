@@ -3,7 +3,9 @@
 	"package": "chihalu.skipsigninput.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ExampleMixin"
+		"SignBlockEntityMixin",
+		"ServerPlayerEntityMixin",
+		"SignItemMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

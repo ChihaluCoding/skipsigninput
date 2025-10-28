@@ -3,34 +3,22 @@
 	"id": "skipsigninput",
 	"version": "${version}",
 	"name": "SkipSignInput",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "看板設置時の文字入力画面をスキップして直接看板を設置できるようにするModです。",
 	"authors": [
-		"Me!"
+		"ちはる"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
 	},
-	"license": "CC0-1.0",
+	"license": "MIT",
 	"icon": "assets/skipsigninput/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
 			"chihalu.skipsigninput.SkipSignInput"
-		],
-		"client": [
-			"chihalu.skipsigninput.SkipSignInputClient"
-		],
-		"fabric-datagen": [
-			"chihalu.skipsigninput.SkipSignInputDataGenerator"
 		]
 	},
 	"mixins": [
-		"skipsigninput.mixins.json",
-		{
-			"config": "skipsigninput.client.mixins.json",
-			"environment": "client"
-		}
+		"skipsigninput.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.17.3",
