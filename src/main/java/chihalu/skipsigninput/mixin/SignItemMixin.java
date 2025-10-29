@@ -1,6 +1,7 @@
 package chihalu.skipsigninput.mixin;
 
 import chihalu.skipsigninput.SignBlockEntityAccess;
+import chihalu.skipsigninput.SkipSignInput;
 import net.minecraft.block.AbstractSignBlock;
 import net.minecraft.block.entity.SignBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -22,7 +23,7 @@ abstract class SignItemMixin {
 		)
 	)
 	private void skipsigninput$markFresh(AbstractSignBlock instance, PlayerEntity player, SignBlockEntity sign, boolean front) {
-		((SignBlockEntityAccess) sign).skipsigninput$setSkipEditor(true);
-		instance.openEditScreen(player, sign, front);
-	}
+                ((SignBlockEntityAccess) sign).skipsigninput$setSkipEditor(SkipSignInput.isSkipEnabled());
+                instance.openEditScreen(player, sign, front);
+        }
 }

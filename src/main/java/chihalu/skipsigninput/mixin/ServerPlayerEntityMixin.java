@@ -14,7 +14,7 @@ abstract class ServerPlayerEntityMixin {
 	@Inject(method = "openEditSignScreen", at = @At("HEAD"), cancellable = true)
 	private void skipsigninput$skipFreshEditor(SignBlockEntity sign, boolean front, CallbackInfo ci) {
                 SignBlockEntityAccess access = (SignBlockEntityAccess) sign;
-                if (access.skipsigninput$shouldSkipEditor()) {
+                if (SkipSignInput.isSkipEnabled() && access.skipsigninput$shouldSkipEditor()) {
                         access.skipsigninput$setSkipEditor(false);
                         sign.setEditor(null);
                         SkipSignInput.LOGGER.info("看板の入力画面をスキップしました。");
