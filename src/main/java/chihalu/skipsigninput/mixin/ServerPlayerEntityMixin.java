@@ -1,6 +1,7 @@
 package chihalu.skipsigninput.mixin;
 
 import chihalu.skipsigninput.SignBlockEntityAccess;
+import chihalu.skipsigninput.SkipSignInput;
 import net.minecraft.block.entity.SignBlockEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
 import org.spongepowered.asm.mixin.Mixin;
@@ -12,11 +13,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 abstract class ServerPlayerEntityMixin {
 	@Inject(method = "openEditSignScreen", at = @At("HEAD"), cancellable = true)
 	private void skipsigninput$skipFreshEditor(SignBlockEntity sign, boolean front, CallbackInfo ci) {
-		SignBlockEntityAccess access = (SignBlockEntityAccess) sign;
-		if (access.skipsigninput$shouldSkipEditor()) {
-			access.skipsigninput$setSkipEditor(false);
-			sign.setEditor(null);
-			ci.cancel();
-		}
-	}
+                SignBlockEntityAccess access = (SignBlockEntityAccess) sign;
+                if (access.skipsigninput$shouldSkipEditor()) {
+                        access.skipsigninput$setSkipEditor(false);
+                        sign.setEditor(null);
+                        SkipSignInput.LOGGER.info("看板の入力画面をスキップしました。");
+                        ci.cancel();
+                }
+        }
 }
