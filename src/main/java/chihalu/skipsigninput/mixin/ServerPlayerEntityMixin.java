@@ -8,9 +8,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-/**
- * Cancels the automatic sign editor when the sign was just placed.
- */
 @Mixin(ServerPlayerEntity.class)
 abstract class ServerPlayerEntityMixin {
 	@Inject(method = "openEditSignScreen", at = @At("HEAD"), cancellable = true)
